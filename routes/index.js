@@ -12,7 +12,23 @@ router.get('/auth/google', passport.authenticate(
   {
     // Requesting the user's profile and email
     scope: ['profile', 'email'],
+    // optional, force pick account every time
+    // prompt: 'select_account'
   }
 ));
+
+router.get('/oauth2callback', passport.authenticate(
+  'google',
+  {
+    successRedirect: '/',
+    failureRedirect: '/'
+  }
+));
+
+router.get('/logout', function(req, res){
+  req.logout(function() {
+    res.redirect('/');
+  });
+});
 
 module.exports = router;
