@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//? get day function
+function getDay(){
+    const date = new Date()
+    const daysOfWeek =['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    let today = daysOfWeek[date.getDay()]
+    return today
+}
+
 //?activity schema
 const activitySchema = new Schema ({
     activity: String,
