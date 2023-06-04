@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #D8F0FA;
 }
 
 a {
@@ -16,4 +17,15 @@ a {
 
 .login img {
   height: 30px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #C7DEFA;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
 }

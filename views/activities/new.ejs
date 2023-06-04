@@ -1,5 +1,39 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 
+    <form id="new-activity" action="/today" method="post">
+        
+        <label>Activity</label>
+        <input type="text" name="activity"><br>
+        <label>Activity type</label>
+        <select name="activityType">
+            <option>Cooking</option>
+            <option>Exercise</option>
+            <option>Gardening</option>
+            <option>Hobby</option>
+            <option>Housework</option>
+            <option>Hygiene</option>
+            <option>Reading</option>
+            <option>Religious practice</option>
+            <option>Sleeping</option>
+            <option>Socialising</option>
+            <option>Studying</option>
+            <option>Wellbeing</option>
+        </select> <br>
+        <label>Days</label>
+            <input type="checkbox" name="day" value="Monday">Monday
+            <input type="checkbox" name="day" value="Tuesday">Tuesday
+            <input type="checkbox" name="day" value="Wednesday">Wednesday
+            <input type="checkbox" name="day" value="Thursday">Thursday
+            <input type="checkbox" name="day" value="Friday">Friday
+            <input type="checkbox" name="day" value="Saturday">Saturday
+            <input type="checkbox" name="day" value="Sunday">Sunday<br>
+        <label>Target time (minutes)</label>
+        <input type="number" name="time"><br>
+        <label>Is this a goal?</label>
+        <input type="checkbox" name="recordedGoal"><br>
 
+        <input type="submit" value="Add activity">
 
-<%- include('./partials/footer') %>
+    </form>
+
+<%- include('../partials/footer') %>
