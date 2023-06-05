@@ -17,7 +17,7 @@ const activitySchema = new Schema ({
     //checkboxes to select multiple
     day: [{
         type: String,
-        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        enum: ['Monday', ' Tuesday', ' Wednesday', ' Thursday', ' Friday', ' Saturday', ' Sunday'],
         required: true
     }],
     //time will need to increment from 30mins, 1hour, 1hour 30mins, 2hours etc

@@ -10,7 +10,7 @@ require('dotenv').config();
 require('./config/database');
 require('./config/passport');
 
-const indexRouter = require('./routes/index');
+const activitiesrouter = require('./routes/activities');
 const usersRouter = require('./routes/users');
 const journalRouter = require('./routes/journals')
 
@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', indexRouter);
+app.use('/', activitiesrouter);
 app.use('/users', usersRouter);
 app.use('/', journalRouter)
 

@@ -15,27 +15,7 @@ router.get('/today', activitiesCtrl.index)
 
 router.get('/activities/new', activitiesCtrl.new)
 
-router.get('/activities/edit', activitiesCtrl.edit, (req, res) => {
-  //Check for specific day
-  if (day) {
-    Activity.find({ days: day }, (err, activities) => {
-      if (err) {
-        res.status(500).json({ error: 'An error occured while fetching activities'})
-      } else {
-        res.json(activities)
-      }
-    });
-  } else {
-    // No specific day provided
-    Activity.find({}, (err, activities) => {
-      if (err) {
-        res.status(500).json({ error: 'An error occured while fetching activities'})
-      } else {
-        res.json(activities)
-      }
-    })
-  }
-})
+router.get('/activities/:id/edit', activitiesCtrl.edit)
 
 router.post('/today', activitiesCtrl.create)
 
@@ -43,7 +23,7 @@ router.delete('/activities/:id', activitiesCtrl.delete)
 
 router.get('/activities/:id', activitiesCtrl.show)
 
-
+router.get('/activities', activitiesCtrl.showAll)
 
 
 //! oauth blocks

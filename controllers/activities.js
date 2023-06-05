@@ -9,6 +9,29 @@ function getToday(){
     return today
 }
 
+// (req, res) => {
+//     //Check for specific day
+//     if (day) {
+//       Activity.find({ days: day }, (err, activities) => {
+//         if (err) {
+//           res.status(500).json({ error: 'An error occured while fetching activities'})
+//         } else {
+//           res.json(activities)
+//         }
+//       });
+//     } else {
+//       // No specific day provided
+//       Activity.find({}, (err, activities) => {
+//         if (err) {
+//           res.status(500).json({ error: 'An error occured while fetching activities'})
+//         } else {
+//           res.json(activities)
+//         }
+//       })
+//     }
+//   }
+
+
 //? index function
 async function index (req, res) {
     const activities = await Activity.find({});
@@ -26,10 +49,8 @@ async function show(req, res, next) {
             console.log(`${key[0].toUpperCase() + key.substring(1)}: ${activity[key]}`)
         }
 
-        res.render('activities/journal', {
-            activity: activity.toObject(),
-            name: activity.activity
-        })
+        res.render('activities/journal', { title: activity.activity, activity})
+
     } catch (err) {
         console.log('SHOW ERROR MESSAGE ->', err.message)
         next()
@@ -87,6 +108,12 @@ async function deleteActivity(req, res, next){
     const activity = await Activity.findOne({ 'activity._id': req.params.id})
 }
 
+//? showAll activity
+async function showAll(req, res, next){
+    res.render('activities/all', { title: 'All activities'})
+}
+
+
 //? Exports
 
 module.exports = {
@@ -97,5 +124,6 @@ module.exports = {
     edit,
     delete: deleteActivity,
     getToday,
-    show
+    show,
+    showAll
 }
