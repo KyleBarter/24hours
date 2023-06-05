@@ -11,8 +11,43 @@
         <option value="Sunday">Sunday</option>
 
     </select>
-    <form>
+    <form action="/activities" method="POST">
 
+        <label>Activity</label>
+        <input type="text" name="activity" value="<%= activity.activity %>"><br>
+
+        <label>Activity type</label>
+        <select name="activityType">
+            <option value="Cooking" <%= activity.activityType === 'Cooking' ? 'selected' : '' %>>Cooking</option>
+            <option value="Exercise" <%= activity.activityType === 'Exercise' ? 'selected' : '' %>>Exercise</option>
+            <option value="Gardening" <%= activity.activityType === 'Gardening' ? 'selected' : '' %>>Gardening</option>
+            <option value="Hobby" <%= activity.activityType === 'Hobby' ? 'selected' : '' %>>Hobby</option>
+            <option value="Housework" <%= activity.activityType === 'Housework' ? 'selected' : '' %>>Housework</option>
+            <option value="Hygiene" <%= activity.activityType === 'Hygiene' ? 'selected' : '' %>>Hygiene</option>
+            <option value="Reading" <%= activity.activityType === 'Reading' ? 'selected' : '' %>>Reading</option>
+            <option value="Religious practice" <%= activity.activityType === 'Religious practice' ? 'selected' : '' %>>Religious practice</option>
+            <option value="Sleeping" <%= activity.activityType === 'Sleeping' ? 'selected' : '' %>>Sleeping</option>
+            <option value="Socialising" <%= activity.activityType === 'Socialising' ? 'selected' : '' %>>Socialising</option>
+            <option value="Studying" <%= activity.activityType === 'Studying' ? 'selected' : '' %>>Studying</option>
+            <option value="Wellbeing" <%= activity.activityType === 'Wellbeing' ? 'selected' : '' %>>Wellbeing</option>
+        </select><br>
+
+        <label>Days</label>
+        <input type="checkbox" name="day" value="Monday" <%= activity.day ? 'checked': ''%>>Monday
+        <input type="checkbox" name="day" value="Tuesday" <%= activity.day ? 'checked': ''%>>Tuesday
+        <input type="checkbox" name="day" value="Wednesday" <%= activity.day ? 'checked': ''%>>Wednesday
+        <input type="checkbox" name="day" value="Thursday" <%= activity.day ? 'checked': ''%>>Thursday
+        <input type="checkbox" name="day" value="Friday" <%= activity.day ? 'checked': ''%>>Friday
+        <input type="checkbox" name="day" value="Saturday" <%= activity.day ? 'checked': ''%>>Saturday
+        <input type="checkbox" name="day" value="Sunday" <%= activity.day ? 'checked': ''%>>Sunday<br>
+
+        <label>Target time (minutes)</label>
+        <input type="number" name="time" value="<%= activity.time %>"><br>
+
+        <label>Is this a goal?</label>
+        <input type="checkbox" name="recordedGoal"><br>
+
+        <input type="submit" value="Update activity">
     </form>
 
 <%- include('../partials/footer') %>

@@ -41,6 +41,8 @@ router.post('/today', activitiesCtrl.create)
 
 router.delete('/activities/:id', activitiesCtrl.delete)
 
+router.get('/activities/:id/journal', activitiesCtrl.index)
+
 
 
 

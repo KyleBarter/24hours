@@ -2,7 +2,7 @@ const Activity = require('../models/activity');
 const User = require('../models/user');
 
 //? get day function
-function getDay(){
+function getToday(){
     const date = new Date()
     const daysOfWeek =['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     let today = daysOfWeek[date.getDay()]
@@ -17,7 +17,24 @@ async function index (req, res) {
 }
 
 //? show function
+async function show(req, res, next) {
+    try {
+        const { id } = req.params
+        const activity = await Activity.findById(id)
 
+        for(const key in activity.toObject()){
+            console.log(`${key[0].toUpperCase() + key.substring(1)}: ${activity[key]}`)
+        }
+
+        res.render('activities/journal', {
+            activity: activity.toObject(),
+            name: activity.activity
+        })
+    } catch (err) {
+        console.log('SHOW ERROR MESSAGE ->', err.message)
+        next()
+    }
+}
 
 //? new activity
 function newActivity(req, res){
@@ -42,7 +59,7 @@ async function edit(req, res, next){
     try {
         const { id } = req.params
         const activity = await Activity.findById(id)
-        res.render('activities/edit', { title: 'My activities'})
+        res.render('activities/edit', { title: 'My activities', activity})
 
     } catch (err) {
         console.log('EDIT ERROR MESSAGE ->', err.message)
@@ -73,5 +90,6 @@ module.exports = {
     update,
     edit,
     delete: deleteActivity,
-    getDay
+    getToday,
+    show
 }

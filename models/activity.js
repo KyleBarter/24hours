@@ -5,15 +5,20 @@ const Schema = mongoose.Schema;
 
 //?activity schema
 const activitySchema = new Schema ({
-    activity: String,
+    activity: {
+        type: String,
+        required: true
+    },
     activityType: {
         type: String,
-        enum: ['Cooking', 'Exercise', 'Gardening', 'Hobbies', 'Reading', 'Religious practice', 'Self care', 'Sleep', 'Socialising', 'Studying', 'Wellbeing', 'Work']
+        enum: ['Cooking', 'Exercise', 'Gardening', 'Hobbies', 'Reading', 'Religious practice', 'Hygiene', 'Sleeping', 'Socialising', 'Studying', 'Wellbeing', 'Work', 'Housework'],
+        required: true
     },
     //checkboxes to select multiple
     day: [{
         type: String,
-        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        required: true
     }],
     //time will need to increment from 30mins, 1hour, 1hour 30mins, 2hours etc
     // possibly use enum  and have it increment? Then in EJS just print the hours so it's not 
@@ -21,10 +26,16 @@ const activitySchema = new Schema ({
     time: {
         type: Number,
         min: 0,
-        max: 1400
+        max: 1400,
+        required: true
     },
     recordedGoal: {
         type: Boolean
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
     }
 })
 
