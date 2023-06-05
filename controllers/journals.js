@@ -11,7 +11,7 @@ async function create(req, res) {
     } catch (err) {
         console.log('JOURNAL CREATE ERROR -> ', err)
     }
-    res.redirect(`/activities/${activity._id}/journal`)
+    res.redirect(`/activities/${activity._id}`)
 }
 
 module.exports= {

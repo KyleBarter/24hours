@@ -2,6 +2,16 @@
     <section id="journal-page">
         <div>Activity: </div>
         <div><%= activity.activity %></div>
+        <div>Activity type: </div>
+        <div><%= activity.activityType %></div>
+        <div>Days: </div>
+        <div><%= activity.day %></div>
+        <div>Target time: </div>
+        <div><%= activity.time %></div>
+        <div>Recorded goal: </div>
+        <div><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
     </section>
+
+    <!-- user enters journal here -->
 
 <%- include('../partials/footer') %>

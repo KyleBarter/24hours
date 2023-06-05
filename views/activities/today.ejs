@@ -3,7 +3,7 @@
 <ul>
     <% if (user) { %>
     <% activities.forEach(function(a) { %>
-        <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes<a href="activity/<%= a._id %>/journal"> journal</a></li>
+        <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes<a href="/activity/<%= a._id %>"> Journal</a></li>
     <% }) %>
     <% } else { %> 
         <p>Please login to view your day at a glance</p>

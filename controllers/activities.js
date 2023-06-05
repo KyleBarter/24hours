@@ -70,7 +70,13 @@ async function edit(req, res, next){
 //? update activity
 async function update(req, res, next){
     try {
-        
+        const { id } = req.params
+        const activityDocument = await Activity.findById(id)
+
+        Object.assign(activityDocument, body)
+
+        await activityDocument.save()
+        res.render('activities/journal', { title: activityDocument.activity, activity: activityDocument.toObject() })
     } catch (err) {
         console.log('UPDATE ERROR MESSAGE ->', err.message)
     }
