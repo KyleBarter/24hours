@@ -3,8 +3,8 @@
 
 <h4> Filter through each day to view and edit all your activities</h4>
 <select name="day">
-    <option value="Monday">Monday</option>
-    <option value="Tuesday">Tuesday</option>
+    <option value="Monday" <%= day === 'Monday' ? 'selected' : '' %>>Monday</option>
+    <option value="Tuesday" <%= day === 'Tuesday' ? 'selected' : '' %>>Tuesday</option>
     <option value="Wednesday">Wednesday</option>
     <option value="Thursday">Thursday</option>
     <option value="Friday">Friday</option>
@@ -12,5 +12,21 @@
     <option value="Sunday">Sunday</option>
 
 </select>
+<ul>
+    <% if (user) { %>
+    <% activities.forEach(function(a) { %>
+        <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes<a href="/activities/<%= a._id %>"> Journal</a></li>
+    <% }) %>
+    <% } else { %> 
+        <p>Please login to view your day at a glance</p>
+    <% } %>
+</ul>
 
+<!-- Script goes below -->
+    <script>
+        const select = document.querySelector('select')
+        select.addEventListener('change', e => {
+            window.location = `/activities?day=${e.target.value}`
+        })
+    </script>
 <%- include('../partials/footer') %>

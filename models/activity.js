@@ -11,7 +11,7 @@ const activitySchema = new Schema ({
     },
     activityType: {
         type: String,
-        enum: ['Cooking', 'Exercise', 'Gardening', 'Hobbies', 'Reading', 'Religious practice', 'Hygiene', 'Sleeping', 'Socialising', 'Studying', 'Wellbeing', 'Work', 'Housework'],
+        enum: ['Cooking', 'Exercise', 'Gardening', 'Hobby', 'Reading', 'Religious practice', 'Hygiene', 'Sleeping', 'Socialising', 'Studying', 'Wellbeing', 'Work', 'Housework'],
         required: true
     },
     //checkboxes to select multiple

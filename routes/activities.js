@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const activitiesCtrl = require('../controllers/activities');
-const activities = require('../controllers/activities');
 
 //?activities routes
 /* GET home page. */
@@ -24,6 +23,11 @@ router.delete('/activities/:id', activitiesCtrl.delete)
 router.get('/activities/:id', activitiesCtrl.show)
 
 router.get('/activities', activitiesCtrl.showAll)
+
+
+
+
+
 
 
 //! oauth blocks
