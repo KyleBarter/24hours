@@ -14,28 +14,9 @@ function getDaysActivities(activities, day){
     })
 }
 
-(req, res) => {
-    //Check for specific day
-    if (day) {
-      Activity.find({ days: day }, (err, activities) => {
-        if (err) {
-          res.status(500).json({ error: 'An error occured while fetching activities'})
-        } else {
-          res.json(activities)
-        }
-      });
-    } else {
-      // No specific day provided
-      Activity.find({}, (err, activities) => {
-        if (err) {
-          res.status(500).json({ error: 'An error occured while fetching activities'})
-        } else {
-          res.json(activities)
-        }
-      })
-    }
-  }
-
+//? show recorded goals on today only
+const activityArray = Object.values(Activity)
+const trueGoals = activityArray.filter(activity => Activity.recordedGoal === true)
 
 //? index function
 async function index (req, res) {

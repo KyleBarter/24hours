@@ -1,24 +1,20 @@
 <%- include('../partials/header') %>
+<% if (user) { %>    
     <section id="journal-page">
-        <div>Activity: </div>
-        <div><%= activity.activity %></div>
-        <div>Activity type: </div>
-        <div><%= activity.activityType %></div>
-        <div>Days: </div>
-        <div><%= activity.day %></div>
-        <div>Target time: </div>
-        <div><%= activity.time %> minutes</div>
-        <div>Recorded goal: </div>
-        <div><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
+        <div><strong>Activity:  &nbsp;</strong>  <%= activity.activity %></div>
+        <div><strong>Activity type: &nbsp;</strong><%= activity.activityType %></div>
+        <div><strong>Days: &nbsp;</strong><%= activity.day %></div>
+        <div> <strong>Target time: &nbsp;</strong><%= activity.time %> minutes</div>
+        <div><strong>Recorded goal: &nbsp;</strong><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
+
     </section>
     <a href="/activities/<%=activity._id%>/edit">Edit</a>
     <form action="activities/<%=activity._id%>?_method=DELETE" method="POST" class="delete-form">
-        <button type="submit">DELETE</button>
+        <button id="delete" type="submit">DELETE</button>
     </form>
     <div></div>
 
     <!-- user enters journal here -->
-    <% if (user) { %>
         <form id="add-journal" method="POST" action="/activities/<%= activity._id %>/journal">
             <label>Journal entry:</label>
             <textarea name="journalEntry"></textarea>
@@ -45,7 +41,7 @@
                 </tbody>
             </table>
     <% } else { %>
-        <h5>Please login to add journal entries</h5>
+        <h5>Please login to view and add journal entries</h5>
     <% } %>
 
 

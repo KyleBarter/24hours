@@ -15,7 +15,7 @@
 <ul>
     <% if (user) { %>
     <% activities.forEach(function(a) { %>
-        <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes<a href="/activities/<%= a._id %>"> Journal</a></li>
+        <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes | <a href="/activities/<%= a._id %>" class="journal"> Journal</a></li>
     <% }) %>
     <% } else { %> 
         <p>Please login to view your day at a glance</p>

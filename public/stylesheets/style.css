@@ -49,10 +49,31 @@ a {
 
 li {
   list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 10px 10px 10px 10px
+}
+
+#journal-page > div {
+  display: flex;
+  justify-content: center;
+  padding: 1%
+}
+
+#delete {
+  background-color: red;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
   display: flex;
   justify-content: center;
   color: #DED7FB
+}
+
+.journal {
+  display: flex;
+  justify-content: center;
+  margin-left: 8px;
 }
