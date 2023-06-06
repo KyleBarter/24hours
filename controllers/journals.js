@@ -1,11 +1,11 @@
-const activity = require('../models/activity');
 const Activity = require('../models/activity');
-const User = require('../models/user');
 
 async function create(req, res) {
+    console.log(req.body)
     const activity = await Activity.findById(req.params.id)
     req.body.user = req.user._id;
     activity.journals.push(req.body);
+    console.log(activity)
     try {
         await activity.save()
     } catch (err) {

@@ -15,17 +15,44 @@ a {
   height: 34px;
 }
 
+
+nav {
+  display: flex;
+  background-color: #C7DEFA;
+  justify-content: center;
+  padding: 0 20px 0 30px;
+  background-image: linear-gradient(to right, #D8F0FA 0%, #C7DEFA 20%, #C7DEFA 80%, #D8F0FA 100%)
+}
+
 .login img {
   height: 30px;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #C7DEFA;
+.login {
+  text-decoration: none;
+}
+
+.nav-link{
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px
+}
+
+nav > a:hover {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 
 h1 {
   display: flex;
   justify-content: center;
+  color: #DED7FB
 }

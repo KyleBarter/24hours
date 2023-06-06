@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//? journal schema
+const journalSchema = new Schema({
+    journalEntry: {
+        type: String,
+        required: true
+    }, 
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
+    },
+},  {
+    timestamps: true
+    });
 
 
 //?activity schema
@@ -17,7 +31,7 @@ const activitySchema = new Schema ({
     //checkboxes to select multiple
     day: [{
         type: String,
-        enum: ['Monday', ' Tuesday', ' Wednesday', ' Thursday', ' Friday', ' Saturday', ' Sunday'],
+        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         required: true
     }],
     //time will need to increment from 30mins, 1hour, 1hour 30mins, 2hours etc
@@ -32,6 +46,7 @@ const activitySchema = new Schema ({
     recordedGoal: {
         type: Boolean
     },
+    journals: [journalSchema],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',

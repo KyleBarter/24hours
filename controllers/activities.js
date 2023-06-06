@@ -98,7 +98,7 @@ async function update(req, res, next){
         const { id } = req.params
         const activityDocument = await Activity.findById(id)
 
-        Object.assign(activityDocument, body)
+        Object.assign(activityDocument, req.body)
 
         await activityDocument.save()
         res.render('activities/journal', { title: activityDocument.activity, activity: activityDocument.toObject() })
@@ -109,7 +109,15 @@ async function update(req, res, next){
 
 //? delete activity
 async function deleteActivity(req, res, next){
-    const activity = await Activity.findById(req.params.id)
+    try {
+        const activity = await Activity.findById(req.params.id)
+        const { activityInfoId } = req.body 
+        activity.activityInfo.pull(activityInfoId)
+        await activity.save()
+        res.redirect('activities/journal')
+    } catch (err) {
+        console.log('DELETE ERROR MESSAGE ->', err.message)
+    }
 }
 
 //? showAll activity

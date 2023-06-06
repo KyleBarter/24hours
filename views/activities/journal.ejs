@@ -12,13 +12,41 @@
         <div><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
     </section>
     <a href="/activities/<%=activity._id%>/edit">Edit</a>
+    <form action="activities/<%=activity._id%>?_method=DELETE" method="POST" class="delete-form">
+        <button type="submit">DELETE</button>
+    </form>
     <div></div>
 
     <!-- user enters journal here -->
-    <form id="add-journal" method="POST" action="/activities/<%= activity._id %>">
-        <label>Journal entry:</label>
-        <textarea name="journalEntry"></textarea>
-        <input type="submit" value="Add journal entry">
-    </form>
-    
+    <% if (user) { %>
+        <form id="add-journal" method="POST" action="/activities/<%= activity._id %>/journal">
+            <label>Journal entry:</label>
+            <textarea name="journalEntry"></textarea>
+            <input type="submit" value="Add journal entry">
+        </form>
+        <% if (activity.journals.length) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Journal entry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% activity.journals.forEach(function(j) { %>
+                        <tr>
+                            <td><%= j.createdAt.toLocaleDateString() %></td>
+                            <td><%= j.journalEntry %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <h5>No journal entries yet</h5>
+                <% } %>
+                </tbody>
+            </table>
+    <% } else { %>
+        <h5>Please login to add journal entries</h5>
+    <% } %>
+
+
 <%- include('../partials/footer') %>
