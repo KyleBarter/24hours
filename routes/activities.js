@@ -16,6 +16,8 @@ router.get('/activities/new', activitiesCtrl.new)
 
 router.get('/activities/:id/edit', activitiesCtrl.edit)
 
+router.put('/activities/:id', activitiesCtrl.update)
+
 router.post('/today', activitiesCtrl.create)
 
 router.delete('/activities/:id', activitiesCtrl.delete)
@@ -23,7 +25,6 @@ router.delete('/activities/:id', activitiesCtrl.delete)
 router.get('/activities/:id', activitiesCtrl.show)
 
 router.get('/activities', activitiesCtrl.showAll)
-
 
 
 

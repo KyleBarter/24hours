@@ -12,7 +12,13 @@
         <div><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
     </section>
     <a href="/activities/<%=activity._id%>/edit">Edit</a>
+    <div></div>
 
     <!-- user enters journal here -->
-
+    <form id="add-journal" method="POST" action="/activities/<%= activity._id %>">
+        <label>Journal entry:</label>
+        <textarea name="journalEntry"></textarea>
+        <input type="submit" value="Add journal entry">
+    </form>
+    
 <%- include('../partials/footer') %>
