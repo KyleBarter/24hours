@@ -8,17 +8,12 @@
         <div><strong>Recorded goal: &nbsp;</strong><%= activity.recordedGoal ? 'Yes' : 'Nope' %></div>
 
     </section>
-    <a href="/activities/<%=activity._id%>/edit">Edit</a>
-    <form action="activities/<%=activity._id%>?_method=DELETE" method="POST" class="delete-form">
-        <button id="delete" type="submit">DELETE</button>
-    </form>
-    <div></div>
-
+    <a href="/activities/<%=activity._id%>/edit" id="edit">Edit</a>
     <!-- user enters journal here -->
         <form id="add-journal" method="POST" action="/activities/<%= activity._id %>/journal">
             <label>Journal entry:</label>
-            <textarea name="journalEntry"></textarea>
-            <input type="submit" value="Add journal entry">
+            <textarea name="journalEntry" id="journal-box"></textarea>
+            <input type="submit" value="Add journal entry" id="journal-submit">
         </form>
         <% if (activity.journals.length) { %>
             <table>
@@ -40,6 +35,9 @@
                 <% } %>
                 </tbody>
             </table>
+            <form action="activities/<%=activity._id%>?_method=DELETE" method="POST" class="delete-form">
+                <button id="delete" type="submit">DELETE</button>
+            </form>
     <% } else { %>
         <h5>Please login to view and add journal entries</h5>
     <% } %>

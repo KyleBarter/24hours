@@ -39,7 +39,7 @@ nav {
   border-radius: 5px
 }
 
-nav > a:hover {
+a:hover {
   color: white;
 }
 
@@ -51,13 +51,15 @@ li {
   list-style: none;
   display: flex;
   justify-content: center;
-  margin: 10px 10px 10px 10px
+  margin: 10px 10px 10px 10px;
+  color: #C8C2E2;
 }
 
 #journal-page > div {
   display: flex;
   justify-content: center;
-  padding: 1%
+  padding: 1%;
+  color: #C8C2E2;
 }
 
 #delete {
@@ -76,4 +78,46 @@ h1 {
   display: flex;
   justify-content: center;
   margin-left: 8px;
+}
+
+#today-activity {
+  color: #C8C2E2
+}
+
+#edit {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-form {
+  display: flex;
+  justify-content: center;
+}
+
+#delete {
+  display: flex;
+  justify-content: center;
+}
+
+#journal-box {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+}
+
+#journal-submit {
+  margin: 10px;
+  color: #00B7FF;
+}
+
+#journal-submit:hover {
+  background-color:#C8C2E2;
+  color: white;
+}
+
+table {
+  color: #C8C2E2
 }

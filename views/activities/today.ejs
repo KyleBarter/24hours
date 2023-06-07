@@ -1,9 +1,22 @@
 <%- include('../partials/header') %>
+<script>
+    function toggleLink(activityId) {
+        const checkbox = document.getElementById(`myCheckbox-${activityId}`)
+        const link = document.getElementById(`journal-link-${activityId}`)
+
+        if(checkbox.checked) {
+            link.style.pointerEvents = "auto";
+        } else {
+            link.style.pointerEvents = "none"
+        }
+    }
+</script>
 
 <ul>
     <% if (user) { %>
         <% activities.forEach(function(a) { %>
-            <li><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes | <a href="/activities/<%= a._id %>" class="journal">Journal</a></li>
+            <li id="today-activity"><%= a.activity %> | <%= a.activityType %> | <%= a.time %> minutes | <input type="checkbox" id="myCheckbox-<%= a._id %>" onchange="toggleLink('<%= a._id %>')">
+                <a href="/activities/<%= a._id %>" class="journal" id="journal-link-<%= a._id %>">Journal</a></li>
         <% }) %>
     <% } else { %> 
         <p>Please login to view your day at a glance</p>
