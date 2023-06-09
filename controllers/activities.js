@@ -2,8 +2,14 @@ const Activity = require('../models/activity');
 const User = require('../models/user');
 
 //? get day function
-function getDaysActivities(activities, day){
-    
+function getDaysActivities(activities, day, user){
+    // end function if no user logged in
+    if (!user) {
+        return 
+    }
+    // filter activities to specific user
+    console.log('activities', activities)
+    activities = activities.filter(activity => user._id.equals(activity.user))
     if (!day) {
         const date = new Date()
         const daysOfWeek =['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -21,7 +27,7 @@ const trueGoals = activityArray.filter(activity => Activity.recordedGoal === tru
 //? index function
 async function index (req, res) {
     const activities = await Activity.find({});
-    res.render('activities/today', { title: 'Today at a glance', activities: getDaysActivities(activities)})
+    res.render('activities/today', { title: 'Today at a glance', activities: getDaysActivities(activities, null, req.user)})
 }
 
 //? show function
@@ -52,7 +58,7 @@ async function create(req, res, next){
     try {
         // convert recordedGoal checkbox of nothing or 'on' to be boolean
         req.body.recordedGoal = !! req.body.recordedGoal;
-        const activity = await Activity.create(req.body);
+        const activity = await Activity.create({...req.body, user: req.user._id});
         res.redirect('activities/new')
     } catch (err) {
         console.log('CREATE ERROR MESSAGE ->', err.message)
@@ -105,7 +111,7 @@ async function deleteActivity(req, res, next){
 async function showAll(req, res, next){
     console.log(req.query)
     const activities = await Activity.find({});
-    res.render('activities/all', { title: 'All activities', activities: getDaysActivities(activities, req.query.day), day: req.query.day})
+    res.render('activities/all', { title: 'All activities', activities: getDaysActivities(activities, req.query.day, req.user), day: req.query.day})
 }
 
 
